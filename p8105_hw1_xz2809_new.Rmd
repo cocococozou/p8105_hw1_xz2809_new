@@ -1,7 +1,28 @@
 ---
-title: "Simple document"
+title: "Homework 1"
 output: github_document
 ---
 
-I'm an R Markdown document! 
+First, I need to load the package that I need for for data construction and manipulation. Here is the **code chunk** for loading package. 
 
+```{r}
+library(tidyverse)
+```
+
+
+# Problem 1
+
+This problem focuses on variable types and coercion. Here's a **code chunk** that construct the data frame, which includes random sample, logical vector, character vector and factor vector :
+
+```{r data frame}
+p1data = tibble(
+  vec_numeric = runif(10, min=0, max=5),
+  vec_char = c("a", "b", "c", "d","e","f","g","h","i","j"),
+  vec_factor = factor(c("male", "male", "female", "female","male", "male", "female", "female","male", "male")),
+  vec_logical = as.logical(vec_numeric>2)
+)
+
+class(p1data$vec_logical)
+```
+
+After constructing the data, we are asked to take the mean of each variable in your dataframe. The mean of numerical vector, the random sample from a uniform[0, 5] distribution is `r mean(p1data$vec_numeric)`. The mean of the logical vector, which indicates whether elements of the sample are greater than 2, is `r mean(p1data$vec_logical)`. On the other hand, the means of the factor vector and the character vector are both`r mean(p1data$vec_factor)` and `r mean(p1data$vec_char)`. The logical vector has a mean because it is recognized as "0" and "1", however, the factor vector and charater vector are not numerical values.
