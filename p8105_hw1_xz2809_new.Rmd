@@ -1,13 +1,15 @@
 ---
-title: "Homework 1"
+title: "P8105 Data Science Homework 1"
 author: "Coco Xiaoke Zou"
 date: 2018-09-20
 output: github_document
 ---
 
+#Note 0 
+
 First, I need to load the package that I need for for data construction and manipulation. Here is the **code chunk** for loading package. 
 
-```{r setup, include = FALSE}
+```{r setup}
 library(tidyverse)
 library(ggplot2)
 ```
@@ -39,7 +41,7 @@ p1_char_to_num = as.numeric(p1data$vec_char)
 
 The logical vector are converted to "1" and "0" as numerical values and the factor vector are converted to "1" and "2" as numerical values. On the other hand, for the charater vecter, NAs are introduced by coercion. 
 
-Finally, we are going to convert our character variable from character to factor to numeric; similarly, convert our factor variable from factor to character to numeric. Here is the **code chunk** 
+Finally, we are going to convert our character variable from character to factor to numeric; similarly, convert our factor variable from factor to character to numeric. Here is the **code chunk** :
 
 ```{r, message = FALSE, warning = FALSE}
 p1_char_to_fac_to_num = as.numeric(as.factor(p1data$vec_char))
