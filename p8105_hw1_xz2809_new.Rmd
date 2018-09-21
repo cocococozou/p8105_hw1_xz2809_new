@@ -38,10 +38,24 @@ The logical vector are converted to "1" and "0" as numerical values and the fact
 
 Finally, we are going to convert our character variable from character to factor to numeric; similarly, convert our factor variable from factor to character to numeric. Here is the **code chunk** 
 
-```{r}
+```{r, message = FALSE, warning = FALSE}
 p1_char_to_fac_to_num = as.numeric(as.factor(p1data$vec_char))
 p1_fac_to_char_to_num = as.numeric(as.character(p1data$vec_factor))
 ```
 
 The charater variable that converted to factor and then to numeric were shown as "1", "2", "3" to "10". It is because the 10 charaters are converted to factors first, then it has 10 different factors. When the 10 different factors are converted to numerical values, they are shown as 10 integers. For the factor variable, it was converted to charater first and when charaters are converted to numerical values, NAs are introduced by coercion. 
+
+# Problem 2
+
+This problem focuses on plotting and the use of inline R code. Here's a **code chunk** that construct the data frame, which includes two random samples, logical vector, character vector and factor vector
+
+```{r}
+p2data = tibble(
+  x = rnorm(1000,mean=0),
+  y = rnorm(1000,mean=0),
+  vec_logical = as.logical(x + y >0),
+  Log_to_num_coer = as.numeric (vec_logical),
+  Log_to_fac_coer = as.factor(vec_logical)
+)
+```
 
