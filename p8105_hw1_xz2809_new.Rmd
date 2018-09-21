@@ -1,11 +1,13 @@
 ---
 title: "Homework 1"
+author: "Coco Xiaoke Zou"
+date: 2018-09-20
 output: github_document
 ---
 
 First, I need to load the package that I need for for data construction and manipulation. Here is the **code chunk** for loading package. 
 
-```{r}
+```{r setup, include = FALSE}
 library(tidyverse)
 library(ggplot2)
 ```
@@ -62,7 +64,7 @@ p2data = tibble(
 
 The data frame contains five elements. Two random sample of size 1000 from a standard Normal distribution, a logical vector indicating whether the x + y > 0, a numeric vector created by coercing the above logical vector and a factor vector created by coercing the above logical vector. The size of the data is `r dim(p2data)`. Which means that the data set has 1000 rows and 5 columns. The mean of the x is `r mean(p2data$x)` and the median of the x is `r median(p2data$x)`. The proportion of the cases for which the logical vector is "TRUE" is `r sum(p2data$vec_logical=="TRUE")/length(p2data$vec_logical)`.
 
-Then, we are here to make plots for visualization. Here is the **code chunk** to construct plots. 
+Then, we are here to make plots for visualization. Here is the **code chunk** to construct plots and the save the first plot. 
 
 ```{r}
 ggplot(p2data,
@@ -74,3 +76,4 @@ ggplot(p2data,
        aes(y = y, x = x, color = Log_to_fac_coer)) + geom_point()
 ```
 
+For the first plot, we add logical vector as color scale. There are two colors in total, which are divided by the x+y=1 line. This is because the logical factor indicates "TRUE" when x+y>1 and "FALSE" when x+y<1. The second and the third plots shows the same pattern, the two colors are divided by the x+y=1 line. When the logical vector is coerced to numerical values, it has two values "1" and "0". When the lofical vector is coerced to factor, it also has two charaters "FALSE" and "TRUE". Therefore, the three plots all share the similar dividing lines. 
