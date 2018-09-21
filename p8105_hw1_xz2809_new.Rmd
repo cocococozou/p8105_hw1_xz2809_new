@@ -7,6 +7,7 @@ First, I need to load the package that I need for for data construction and mani
 
 ```{r}
 library(tidyverse)
+library(ggplot2)
 ```
 
 
@@ -57,5 +58,19 @@ p2data = tibble(
   Log_to_num_coer = as.numeric (vec_logical),
   Log_to_fac_coer = as.factor(vec_logical)
 )
+```
+
+The data frame contains five elements. Two random sample of size 1000 from a standard Normal distribution, a logical vector indicating whether the x + y > 0, a numeric vector created by coercing the above logical vector and a factor vector created by coercing the above logical vector. The size of the data is `r dim(p2data)`. Which means that the data set has 1000 rows and 5 columns. The mean of the x is `r mean(p2data$x)` and the median of the x is `r median(p2data$x)`. The proportion of the cases for which the logical vector is "TRUE" is `r sum(p2data$vec_logical=="TRUE")/length(p2data$vec_logical)`.
+
+Then, we are here to make plots for visualization. Here is the **code chunk** to construct plots. 
+
+```{r}
+ggplot(p2data,
+       aes(y = y, x = x, color = vec_logical)) + geom_point()
+ggsave("problem2_xvsy_log.pdf")
+ggplot(p2data,
+       aes(y = y, x = x, color = Log_to_num_coer)) + geom_point()
+ggplot(p2data,
+       aes(y = y, x = x, color = Log_to_fac_coer)) + geom_point()
 ```
 
